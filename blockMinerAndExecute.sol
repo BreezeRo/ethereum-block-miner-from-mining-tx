@@ -24,9 +24,7 @@ contract blockMinerAndExecute {
          require(address(block.coinbase) != minerBlockList[i], "MINER_BLOCKED");
 
          // Special salutations
-         if (minerBlockList[i] == ethermine) {
-            revert("F_OFF_ETHERMINE");
-         }
+         require(address(block.coinbase) != ethermine, "F_OFF_ETHERMINE");
       }
 
       // Receive required tokens if any
